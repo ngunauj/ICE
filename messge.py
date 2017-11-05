@@ -1,12 +1,13 @@
 #coding=utf-8
 import pycurl
+import json
 from urllib import urlencode
 
 Authorization = ''
 
 def change():
     global Authorization
-    Authorization = 'c2ea6a41-5ed0-4293-ab83-2ef2aff81f05'
+    Authorization = '4ce3051c-ca69-49ca-a585-b29c346cd815'
 
 
 def upload(filename):
@@ -25,6 +26,9 @@ def upload(filename):
     response_code = pc.getinfo(pycurl.RESPONSE_CODE)
     print response_code
     pc.close()
+
+#def headData():
+
 
 def msg():
 
@@ -45,6 +49,7 @@ def msg():
             "X-SMS-SIGN:"+key,
             "Authorization: Bearer "+Authorization
         ]
+    '''
     content = {
       'content': 'test_string',
        'dest_id': '15201751803',
@@ -52,12 +57,18 @@ def msg():
            'delivery_report': 'true',
               'signature_id': '0'
     }
+    '''
+
+    content = '[{ "content": "test_string", "dest_id": "15201751803",    "market": false,      "delivery_report": true,  "signature_id": 0    }]'
+    
     c = pycurl.Curl()
     url='https://openapi.saicmotor.com/opensaic/cloud/sms/v1.0.0/msg/98'
-    postfields = urlencode(content)
+    #postfields = json.dumps(content)
+
     c.setopt(c.URL, url)
     c.setopt(c.HTTPHEADER, header)
-    c.setopt(c.POSTFIELDS, postfields)
+    #c.setopt(c.HEADERFUNCTION,headData)
+    c.setopt(c.POSTFIELDS,content)
     #pc.setopt(pc.HTTPPOST, [('upfile', (pc.FORM_FILE, content) ) ])
 #    c.setopt(c.HTTPPUT, content)
     c.setopt(c.CUSTOMREQUEST,"PUT")
