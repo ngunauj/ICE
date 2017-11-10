@@ -10,7 +10,7 @@ mode = True
 ix,iy = -1, -1
 
 def bofang(num):
-  file = '/home/guan/Desktop/hackfdu/music/' + 'music_' + str(num) + '.mp3'
+  file = '/home/guan/Desktop/ICE/music/' + 'music_' + str(num) + '.mp3'
   pygame.mixer.init()
   print "播放音乐{%d}"%(int(num))
   track = pygame.mixer.music.load(file)

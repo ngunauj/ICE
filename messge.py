@@ -7,7 +7,7 @@ Authorization = ''
 
 def change():
     global Authorization
-    Authorization = '4ce3051c-ca69-49ca-a585-b29c346cd815'
+    Authorization = '717ce1b0-0d2d-4498-91b6-79e2cae33e3c'
 
 
 def upload(filename):
@@ -59,7 +59,7 @@ def msg():
     }
     '''
 
-    content = '[{ "content": "test_string", "dest_id": "15201751803",    "market": false,      "delivery_report": true,  "signature_id": 0    }]'
+    content = '[{ "content": "HELLO_WORLD", "dest_id": "15201751803",    "market": false,      "delivery_report": true,  "signature_id": 0    }]'
     
     c = pycurl.Curl()
     url='https://openapi.saicmotor.com/opensaic/cloud/sms/v1.0.0/msg/98'
